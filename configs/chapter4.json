@@ -1,0 +1,47 @@
+{
+  "seed": 42,
+  "source_root": "/root/cod/thesis",
+  "chapter3_output_dir": "/root/cod/thesis/_clean/outputs/chapter3",
+  "output_dir": "/root/cod/thesis/_clean/outputs/chapter4",
+  "device": "cuda:0",
+  "embedding_model_snapshot": "/root/.cache/huggingface/hub/models--Qwen--Qwen3-Embedding-0.6B/snapshots/97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+  "categories": [
+    "files",
+    "read_files",
+    "write_files",
+    "delete_files",
+    "keys",
+    "read_keys",
+    "write_keys",
+    "delete_keys",
+    "executed_commands",
+    "mutexes",
+    "created_services",
+    "started_services",
+    "resolved_apis"
+  ],
+  "category_ablation": {
+    "families": ["goodware", "virlock", "vobfus", "shipup"],
+    "samples_per_family": 8,
+    "max_tokens": 4096
+  },
+  "shap": {
+    "sample_id": "159af1da179a04289004",
+    "max_tokens": 1024,
+    "max_entries": 20,
+    "coalitions": 128,
+    "embedding_token_budget": 8192,
+    "embedding_batch_size": 8
+  },
+  "integrated_gradients": {
+    "sample_id": "3103a711fd1c89a04848",
+    "max_tokens": 1024,
+    "steps": 16
+  },
+  "embedding": {
+    "token_budget": 16384,
+    "max_batch_size": 16
+  },
+  "prevalence_splits": ["train", "validation", "test"],
+  "plot_top_entries": 15
+}

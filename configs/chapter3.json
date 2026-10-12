@@ -1,0 +1,51 @@
+{
+  "seed": 42,
+  "source_root": "/root/cod/thesis",
+  "data_dir": "/root/cod/thesis/data/final_dataset",
+  "output_dir": "/root/cod/thesis/_clean/outputs/chapter3",
+  "splits": {
+    "adversarial_malware": 0.10,
+    "train": 0.80,
+    "validation": 0.10,
+    "test": 0.10
+  },
+  "embedding": {
+    "model_snapshot": "/root/.cache/huggingface/hub/models--Qwen--Qwen3-Embedding-0.6B/snapshots/97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+    "max_tokens": 32768,
+    "token_budget": 65536,
+    "max_batch_size": 24,
+    "chunk_size": 256
+  },
+  "training": {
+    "mlp_device": "cuda:1",
+    "max_epochs": 35,
+    "early_stopping_patience": 6,
+    "threshold_start": 0.05,
+    "threshold_end": 0.95,
+    "threshold_count": 181,
+    "logistic_regression_c": [0.1, 1.0, 10.0],
+    "decision_trees": [
+      {"max_depth": 6, "min_samples_leaf": 10},
+      {"max_depth": 10, "min_samples_leaf": 5},
+      {"max_depth": 16, "min_samples_leaf": 5},
+      {"max_depth": 24, "min_samples_leaf": 2},
+      {"max_depth": null, "min_samples_leaf": 2}
+    ],
+    "xgboost": [
+      {"max_depth": 4, "learning_rate": 0.05, "n_estimators": 700, "min_child_weight": 1},
+      {"max_depth": 6, "learning_rate": 0.05, "n_estimators": 700, "min_child_weight": 1},
+      {"max_depth": 8, "learning_rate": 0.05, "n_estimators": 600, "min_child_weight": 2},
+      {"max_depth": 6, "learning_rate": 0.10, "n_estimators": 450, "min_child_weight": 2}
+    ],
+    "mlp": [
+      {"hidden_layers": [512, 256], "dropout": 0.30, "learning_rate": 0.001, "weight_decay": 0.0, "batch_size": 64, "class_weighted": false},
+      {"hidden_layers": [1024, 512, 256], "dropout": 0.20, "learning_rate": 0.0007, "weight_decay": 0.00001, "batch_size": 64, "class_weighted": false},
+      {"hidden_layers": [1024, 512], "dropout": 0.10, "learning_rate": 0.0005, "weight_decay": 0.00001, "batch_size": 128, "class_weighted": false},
+      {"hidden_layers": [768, 384, 192], "dropout": 0.20, "learning_rate": 0.0007, "weight_decay": 0.0001, "batch_size": 64, "class_weighted": true},
+      {"hidden_layers": [512, 256], "dropout": 0.15, "learning_rate": 0.0005, "weight_decay": 0.00001, "batch_size": 128, "class_weighted": true}
+    ]
+  },
+  "evaluation": {
+    "bootstrap_samples": 500
+  }
+}
